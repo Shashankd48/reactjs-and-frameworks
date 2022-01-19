@@ -20,7 +20,7 @@ export default function UserCard({ user }) {
          />
          <CardBody>
             <h4 className="card-title">{user.name}</h4>
-            <h6 className="text-muted">{user.bio}</h6>
+            <p className="text-muted">{user.bio}</p>
             <h5 className="text-primary">{user.email}</h5>
             <div className="d-block">
                <div>
@@ -29,7 +29,7 @@ export default function UserCard({ user }) {
                   </span>
                </div>
                <div>
-                  <span className="text-primary">{user.location}</span>
+                  <span className="text-primary">Lives in {user.location}</span>
                </div>
                <div>
                   <span className="text-primary">

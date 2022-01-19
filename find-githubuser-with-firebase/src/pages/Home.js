@@ -21,6 +21,7 @@ export default function Home() {
    const context = useContext(UserContext);
    const [query, setQuery] = useState("");
    const [user, setUser] = useState(null);
+
    const fetchDetails = async () => {
       try {
          const { data } = await Axios.get(
@@ -44,13 +45,13 @@ export default function Home() {
       return <Redirect to="/signin" />;
    }
    return (
-      <Container style={{ minHeight: "79.7vh", paddingBottom: "30px" }}>
+      <Container style={{ minHeight: "82vh", paddingBottom: "30px" }}>
          <Col md="5" className="mt-3 p-0">
             <InputGroup>
                <Input
                   type="text"
                   value={query}
-                  placeholder="Please provide the username"
+                  placeholder="Github Username ex: shashasnkd48"
                   onChange={(event) => setQuery(event.target.value)}
                />
                <InputGroupAddon addonType="append">
