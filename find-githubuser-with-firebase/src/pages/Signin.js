@@ -22,8 +22,10 @@ export default function Signin() {
    const context = useContext(UserContext);
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+   const [isLoading, setIsLoading] = useState(false);
 
    const handleSignup = () => {
+      setIsLoading(true);
       firebase
          .auth()
          .signInWithEmailAndPassword(email, password)
@@ -36,12 +38,14 @@ export default function Signin() {
                   uid: res.user.uid,
                })
             );
+            setIsLoading(false);
          })
          .catch((error) => {
             console.log("Error");
             toast(error.message, {
                type: "error",
             });
+            setIsLoading(false);
          });
    };
 
@@ -97,7 +101,7 @@ export default function Signin() {
                            />
                         </FormGroup>
                         <Button block color="success" type="submit">
-                           Sign In
+                           {isLoading ? "Signing In" : "Sign In"}
                         </Button>
                      </CardBody>
                   </Form>

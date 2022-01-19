@@ -24,8 +24,10 @@ export default function Signup() {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [repassword, setRepassword] = useState("");
+   const [isLoading, setIsLoading] = useState(false);
 
    const handleSignup = () => {
+      setIsLoading(true);
       firebase
          .auth()
          .createUserWithEmailAndPassword(email, password)
@@ -39,12 +41,13 @@ export default function Signup() {
                   uid: res.user.uid,
                })
             );
+            setIsLoading(false);
          })
          .catch((error) => {
-            console.log("Error");
             toast(error.message, {
                type: "error",
             });
+            setIsLoading(false);
          });
    };
 
@@ -65,7 +68,7 @@ export default function Signup() {
       <Container>
          <Row
             className="d-flex flex-column align-items-center justify-content-center"
-            style={{ height: "82vh" }}
+            style={{ height: "84vh" }}
          >
             <Col md={{ size: 8 }}>
                <Card
@@ -120,7 +123,7 @@ export default function Signup() {
                            />
                         </FormGroup>
                         <Button block color="success" type="submit">
-                           Signup
+                           {isLoading ? "Creating Account" : "Sign Up"}
                         </Button>
                      </CardBody>
                   </Form>

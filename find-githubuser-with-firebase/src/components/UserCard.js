@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { AiOutlineMail } from "react-icons/ai";
+
 export default function UserCard({ user }) {
    return (
       <Card
