@@ -1,9 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-// import HomePage from "./pages/HomePage";
-// import AboutPage from "./pages/AboutPage";
-// import FormPage from "./pages/FormPage";
-// import Dashboard from "./pages/dashboard/Dashboard";
-// import Analytics from "./pages/dashboard/Analytics";
 import RootLayout from "./root-layout";
 import DashboardLayout from "./pages/dashboard/layout";
 import { lazy, Suspense } from "react";
