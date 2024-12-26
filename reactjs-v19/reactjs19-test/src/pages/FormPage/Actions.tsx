@@ -1,4 +1,4 @@
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { mockAsyncFunction } from "../../libs/utils";
 import { Button, Input } from "@nextui-org/react";
 
@@ -6,25 +6,31 @@ import { Button, Input } from "@nextui-org/react";
 export default function Actions() {
    const [name, setName] = useState("");
    const [error, setError] = useState(null);
-   const [isPending, startTransition] = useTransition();
-
-   console.log("log: isPending", isPending);
 
    const handleSubmit = async () => {
-      startTransition(async () => {
-         const res = await mockAsyncFunction<{
-            message: string;
-            error: string;
-         }>({ message: "Success!", error: "" }, 20000);
+      // startTransition(async () => {
+      //    const res = await mockAsyncFunction<{
+      //       message: string;
+      //       error: string;
+      //    }>({ message: "Success!", error: "" }, 20000);
+      //    console.log("log: res", res);
+      //    if (res.error) {
+      //       setError(error);
+      //       return;
+      //    }
+      //    return;
+      // });
 
-         console.log("log: res", res);
-
-         if (res.error) {
-            setError(error);
-            return;
-         }
+      const res = await mockAsyncFunction<{
+         message: string;
+         error: string;
+      }>({ message: "Success!", error: "" }, 20000);
+      console.log("log: res", res);
+      if (res.error) {
+         setError(error);
          return;
-      });
+      }
+      return;
    };
 
    return (
@@ -37,8 +43,8 @@ export default function Actions() {
          />
          <Button
             onPress={handleSubmit}
-            disabled={isPending}
-            isLoading={isPending}
+            // disabled={isPending}
+            // isLoading={isPending}
          >
             Update
          </Button>
